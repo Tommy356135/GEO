@@ -1,0 +1,24 @@
+version: geomorph_geometry_invalid_v1
+minimum_valid_neighbors: 8
+epsilon: 1.0e-12
+invalid_conditions:
+  - valid_neighbor_count_less_than_8
+  - nonfinite_coordinate
+  - knn_failure
+  - nonfinite_covariance
+  - eigendecomposition_failure
+  - nonfinite_eigenvalue
+  - lambda1_less_than_epsilon
+  - eigenvalue_sum_less_than_epsilon
+  - knn_radius_less_than_or_equal_to_epsilon
+  - no_valid_neighbor_direction_for_direction_consistency
+fallback_values:
+  linearity: 0.0
+  planarity: 0.0
+  curvature: 0.0
+  verticality: 0.0
+  direction_consistency: 0.0
+  log_density: 0.0
+audit_mask: geometry_valid
+audit_mask_model_input: false
+output_requires_finite: true

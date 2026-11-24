@@ -1,0 +1,46 @@
+version: geomorph_phase4a_r2
+common:
+  train_index: datasets/block_indices_50m_merged/train
+  epochs: 100
+  seed: 42
+  physical_batch_size: 1
+  gradient_accumulation_steps: 2
+  amp: true
+  loss: ce_balanced
+  sampler: uniform_blocks
+  optimizer: AdamW
+  learning_rate: 1e-3
+  scheduler: CosineAnnealingLR
+  selection: val_global_mIoU
+  test_evaluation: final_once_only
+B0:
+  model: Baseline-Strong
+  geometry: none
+  fusion: none
+B1:
+  model: Geometry-Concat
+  geometry: K16+K64_normalized
+  geometry_encoder: none
+  fusion: input_concat
+B2:
+  model: Geometry-Encoder
+  geometry: K16+K64_normalized
+  geometry_encoder: 12-32-16
+  fusion: encoded_input_concat
+B3:
+  model: Geometry-SingleFusion
+  geometry: K16+K64_normalized
+  geometry_encoder: 12-32-16
+  fusion:
+    type: residual_gate
+    locations:
+      - encoder1
+Ours:
+  model: GeoMorph-Seg
+  geometry: K16+K64_normalized
+  geometry_encoder: 12-32-16
+  fusion:
+    type: residual_gate
+    locations:
+      - encoder1
+      - encoder2

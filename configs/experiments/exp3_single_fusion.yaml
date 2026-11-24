@@ -1,0 +1,9 @@
+experiment_id: Exp3
+model_name: B3-Single-Fusion
+model_config: configs/model/geometry_single_fusion.yaml
+geometry_mode: normalized_multiscale
+geometry_input_dim: 12
+fusion_locations: [encoder1]
+input_channels: 6
+training_config: configs/train/baseline_strong_block50_merged_train.yaml
+data_cache_root: datasets/geometry_features

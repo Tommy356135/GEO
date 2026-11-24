@@ -1,0 +1,7 @@
+experiment_id: Exp0
+model_name: Baseline-Strong
+model_config: configs/model/minkunet34c_baseline.yaml
+geometry_mode: none
+input_channels: 6
+training_config: configs/train/baseline_strong_block50_merged_train.yaml
+data_cache_root: null

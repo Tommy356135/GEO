@@ -1,0 +1,8 @@
+model: MinkUNet34C
+baseline_name: Baseline-Strong
+in_channels: 6
+num_classes: 9
+dimension: 3
+stem_channels: 32
+planes: [32, 64, 128, 256, 256, 128, 96, 96]
+layers: [2, 3, 4, 6, 2, 2, 2, 2]

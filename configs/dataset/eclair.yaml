@@ -1,0 +1,23 @@
+dataset_root: <DATASET_ROOT>
+pointcloud_dir: <DATASET_ROOT>/pointclouds
+labels_file: <DATASET_ROOT>/labels.json
+pointcloud_glob: "**/*.laz"
+audit_output_dir: results/dataset_audit
+
+expected_class_ids: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+class_names:
+  1: Unassigned
+  2: Ground
+  3: Vegetation
+  4: Buildings
+  5: Noise
+  6: Transmission Wires
+  7: Distribution Wires
+  8: Poles
+  9: Transmission Towers
+  10: Fence
+  11: Vehicle
+
+review_category_mapping:
+  approved: ground_truth
+  rejected: pseudo_label

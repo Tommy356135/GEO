@@ -1,0 +1,9 @@
+experiment_id: Exp2
+model_name: B2-Geometry-Encoder
+model_config: configs/model/geometry_encoded_baseline.yaml
+geometry_mode: normalized_multiscale
+geometry_input_dim: 12
+geometry_embedding_dim: 16
+input_channels: 22
+training_config: configs/train/baseline_strong_block50_merged_train.yaml
+data_cache_root: datasets/geometry_features

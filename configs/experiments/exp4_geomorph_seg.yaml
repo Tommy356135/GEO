@@ -1,0 +1,9 @@
+experiment_id: Exp4
+model_name: GeoMorph-Seg
+model_config: configs/model/geomorph_minkunet.yaml
+geometry_mode: normalized_multiscale
+geometry_input_dim: 12
+fusion_locations: [encoder1, encoder2]
+input_channels: 6
+training_config: configs/train/baseline_strong_block50_merged_train.yaml
+data_cache_root: datasets/geometry_features

@@ -1,0 +1,49 @@
+definition_version: geomorph_geometry_v2
+status: frozen
+neighborhood:
+  type: knn
+  include_query_point: true
+  minimum_valid_neighbors: 8
+  epsilon: 1.0e-12
+  covariance: population
+  eigenvalue_order: descending
+scales:
+  small:
+    k: 16
+  large:
+    k: 64
+features:
+  - linearity
+  - planarity
+  - curvature
+  - verticality
+  - direction_consistency
+  - log_density
+verticality:
+  definition: abs_principal_direction_z
+  range: [0.0, 1.0]
+direction_consistency:
+  definition: mean_absolute_principal_direction_dot_product
+  range: [0.0, 1.0]
+invalid_policy:
+  config: configs/geometry/geometry_invalid_policy.yaml
+normalization:
+  config: configs/geometry/geomorph_normalization.json
+  method: per_scale_per_feature_zscore
+  clip: [-5.0, 5.0]
+dtype:
+  compute: float64
+  cache: float32
+geometry_output_dim:
+  per_scale: 6
+  total: 12
+coordinate_usage:
+  xyz_used_for_neighborhood_and_covariance_only: true
+  xyz_is_baseline_input_feature: false
+  geometry_independent_from_baseline_attributes: true
+provenance:
+  analysis_split: train
+  label_source: ground_truth
+  source_query_set: results/geometry_analysis/full/point_geometry_features.csv
+  scale_decision: results/geomorph_phase4a/scale_freeze_decision.json
+  test_used_for_selection: false

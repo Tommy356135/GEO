@@ -1,0 +1,73 @@
+experiment_name: Baseline-Strong-Block50-MergedSmall
+output_dir: results/baseline_strong_block50_merged
+model:
+  name: MinkUNet34C
+  config: configs/model/minkunet34c_baseline.yaml
+  in_channels: 6
+  num_classes: 9
+  dimension: 3
+data:
+  train_dir: datasets/processed/train
+  val_dir: datasets/processed/val
+  test_dir: datasets/processed/test
+  train_block_index: datasets/block_indices_50m_merged/train
+  val_block_index: datasets/block_indices_50m_merged/val
+  test_block_index: datasets/block_indices_50m_merged/test
+  block_index_root: datasets/block_indices_50m_merged
+  voxel_size: 0.1
+  block_size_m: 50.0
+  train_stride_m: 50.0
+  train_overlap: 0.0
+  inference_stride_m: 25.0
+  inference_overlap: 0.5
+  ignore_index: -100
+small_block_policy:
+  mode: deterministic_adjacent_merge
+  minimum_deepest_active_sites: 8
+  point_dropping: false
+  voxel_duplication: false
+sampling:
+  mode: uniform_blocks
+  class_aware: false
+loss:
+  name: CrossEntropyLoss
+  mode: ce_balanced
+  class_weight_file: results/baseline_diagnostics/train_class_weights.json
+  ignore_index: -100
+training:
+  epochs: 100
+  physical_batch_size: 1
+  gradient_accumulation_steps: 2
+  effective_batch_size: 2
+  amp: true
+  seed: 42
+  num_workers: 0
+optimizer:
+  name: AdamW
+  learning_rate: 1e-3
+  weight_decay: 1e-4
+scheduler:
+  name: CosineAnnealingLR
+  step_mode: epoch
+selection:
+  metric: val_mIoU
+  mode: max
+provenance:
+  change_from_block75: resource_window_only
+  training_data_organization: deterministic_small_block_merge
+  full_tile_training: false
+  spatial_block_training: true
+  full_tile_sliding_inference: true
+  architecture_changed: false
+  batchnorm_changed: false
+  voxel_size_changed: false
+  features_changed: false
+  class_weights_changed: false
+  loss_changed: false
+  optimizer_changed: false
+  learning_rate_changed: false
+  sampler_changed: false
+  sampler_class_weighting: false
+  point_dropping: false
+  voxel_duplication: false
+  pseudo_labels: false

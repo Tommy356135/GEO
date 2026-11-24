@@ -1,0 +1,8 @@
+experiment_id: Exp1
+model_name: B1-Geometry-Concat
+model_config: configs/model/geometry_concat_baseline.yaml
+geometry_mode: normalized_multiscale
+geometry_input_dim: 12
+input_channels: 18
+training_config: configs/train/baseline_strong_block50_merged_train.yaml
+data_cache_root: datasets/geometry_features

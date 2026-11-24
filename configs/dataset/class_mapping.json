@@ -1,0 +1,31 @@
+{
+  "ignore_index": -100,
+  "raw_to_train": {
+    "1": -100,
+    "2": 0,
+    "3": 1,
+    "4": 2,
+    "5": -100,
+    "6": 3,
+    "7": 4,
+    "8": 5,
+    "9": 6,
+    "10": 7,
+    "11": 8
+  },
+  "train_to_name": {
+    "0": "Ground",
+    "1": "Vegetation",
+    "2": "Buildings",
+    "3": "Transmission Wires",
+    "4": "Distribution Wires",
+    "5": "Poles",
+    "6": "Transmission Towers",
+    "7": "Fence",
+    "8": "Vehicle"
+  },
+  "ignore_classes": {
+    "1": "Unassigned",
+    "5": "Noise"
+  }
+}

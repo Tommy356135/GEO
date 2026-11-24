@@ -1,0 +1,51 @@
+dataset_root: <DATASET_ROOT>
+pointcloud_dir: <DATASET_ROOT>/pointclouds
+labels_file: <DATASET_ROOT>/labels.json
+manifest: datasets/manifests/eclair_manifest.csv
+processed_root: datasets/processed
+class_mapping_file: configs/dataset/class_mapping.json
+
+splits: [train, val, test]
+
+default_feature_mode: baseline
+feature_modes:
+  baseline:
+    features:
+      - intensity
+      - red
+      - green
+      - blue
+      - Reflectance
+      - Deviation
+  baseline_xyz:
+    features:
+      - local_x
+      - local_y
+      - local_z
+      - intensity
+      - red
+      - green
+      - blue
+      - Reflectance
+      - Deviation
+feature_normalization:
+  local_x: per_tile_origin_subtraction_meters
+  local_y: per_tile_origin_subtraction_meters
+  local_z: per_tile_origin_subtraction_meters
+  intensity: divide_by_65535
+  red: divide_by_65535
+  green: divide_by_65535
+  blue: divide_by_65535
+  Reflectance: raw_float32
+  Deviation: raw_float32
+  Amplitude: raw_float32_audit_only
+normalization_statistics_policy: train_only_if_a_fitted_transform_is_later_registered
+auxiliary_audit_fields: [Amplitude]
+
+voxel:
+  size: 0.1
+  coordinate_origin: per_tile_minimum_xyz
+  aggregation: mean_features_majority_label
+
+known_failed_tiles: [pointcloud_908.laz]
+random_seed: 20260715

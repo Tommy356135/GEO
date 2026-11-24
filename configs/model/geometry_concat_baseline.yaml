@@ -1,0 +1,10 @@
+model_name: Geometry-Concat-Ablation
+backbone: MinkUNet34C
+baseline_input_dim: 6
+geometry_input_dim: 12
+effective_input_dim: 18
+geometry_definition_version: geomorph_geometry_v2
+geometry_scales:
+  small_k: 16
+  large_k: 64
+fusion: input_concat

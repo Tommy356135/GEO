@@ -1,0 +1,17 @@
+model_name: Geometry-Encoder-Ablation
+backbone: MinkUNet34C
+baseline_input_dim: 6
+geometry_input_dim: 12
+geometry_embedding_dim: 16
+geometry_encoder:
+  hidden_dim: 32
+  output_dim: 16
+  normalization: LayerNorm
+  activation: ReLU
+  dropout: 0.0
+effective_input_dim: 22
+geometry_definition_version: geomorph_geometry_v2
+geometry_scales:
+  small_k: 16
+  large_k: 64
+fusion: encoded_input_concat

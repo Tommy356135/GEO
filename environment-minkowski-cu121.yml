@@ -1,0 +1,21 @@
+name: geomorph-mink
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.10
+  - pip
+  - setuptools
+  - wheel
+  - gcc_linux-64=10
+  - gxx_linux-64=10
+  - openblas-devel
+  - cmake
+  - ninja
+
+# This file intentionally describes only the minimal Conda build environment.
+# Install the pinned pip packages with scripts/create_geomorph_mink_env.sh:
+#   torch==2.3.1 torchvision==0.18.1 torchaudio==2.3.1  (official cu121 index)
+#   numpy==1.26.4                                      (default PyPI index)
+# A conda `pip:` subsection cannot reliably bind only the PyTorch packages to
+# the official cu121 index, so `conda env create -f` is not the complete setup.
